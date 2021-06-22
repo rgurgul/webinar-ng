@@ -1,0 +1,47 @@
+{{title | uppercase}}
+
+<br>
+
+{{today | date:'dd/MM/yyyy | h:m:s'}}
+
+<hr>
+
+<!-- <pre>{{contacts|json}}</pre> -->
+
+<template id="my-tpl">
+  <h1>Welcome</h1>
+</template>
+
+<ng-template>
+  <h1>Welcome</h1>
+</ng-template>
+
+<ul>
+  <li class="item" [ngClass]="{odd: o, even:!o}" *ngFor="let item of contacts; let i = index; let o = odd">
+    <!-- {{i}} {{item | json}} -- {{o}} -->
+    {{item.name | welcome:'pl'}}
+    <br>
+    {{item.name | welcome:'de'}}
+  </li>
+</ul>
+
+<input type="checkbox" [(ngModel)]="access">
+<hr>
+
+<input type="text" [(ngModel)]="title">
+
+<div class="even" *ngIf="access">even</div>
+<div class="odd" *ngIf="!access">odd</div>
+
+<hr>
+
+<div class="even">
+  <div [ngSwitch]="access">
+    <div *ngSwitchCase="true">
+      true
+    </div>
+    <div *ngSwitchDefault>
+      false
+    </div>
+  </div>
+</div>
